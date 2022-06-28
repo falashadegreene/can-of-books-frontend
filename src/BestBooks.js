@@ -1,6 +1,6 @@
 import axios from 'axios';
 import React from 'react';
-//import Carousel from 'react-bootstrap/Carousel';
+import { Carousel, Image } from 'react-bootstrap';
 
 let SERVER = process.env.REACT_APP_SERVER;
 
@@ -15,7 +15,7 @@ class BestBooks extends React.Component {
   getBooks = async () => {
     console.log('are you there?');
     try {
-      let results = await axios.get(`${SERVER}/books`);
+      let results = await axios.get(`${process.env.REACT_APP_SERVER}/books`);
       console.log(results.data);
       this.setState({
         books: results.data
@@ -32,28 +32,64 @@ class BestBooks extends React.Component {
 
   render() {
    console.log(this.state.books);
-    /* TODO: render all the books in a Carousel */
-    // let books = this.state.books.map(bookObj => (
-    //   <p key={bookObj.title}>{bookObj.discription}</p>
-    //))
+   
     return (
       <>
-       {/* <Carousel.Item>
-         <Carousel.Caption>
-          <h2>Hello!</h2>
-         </Carousel.Caption>
-         <img>
-       </Carousel.Item> */}
+       
         <h2>My Essential Lifelong Learning &amp; Formation Shelf</h2>
 
-        {this.state.books.length ? (
-          <p>Book Carousel coming soon</p>
-        ) : (
-          <h3>No Books Found :(</h3>
-        )}
+        {this.state.books.length > 0 ? (
+          <Carousel>
+            {this.state.books.map((book, _id) =>
+            (
+              <Carousel.Item key={_id}>
+                <Image
+                  className='book1'
+                  src="placeholder"
+                  alt='alt'
+                />
+                <h3>{book.title}</h3>
+                <h4>{book.description}</h4>
+                <h5>{book.status}</h5>
+              </Carousel.Item>
+            )
+            
+    )    
+
+        
+  }      
+        {/* //  this.state.books.map(book => ( <>
+        //
+        // )
+        //   <ul key={book._id}>Title: {book.title}</ul>
+        //   <ul key={book._id}>Description: {book.description}</ul>
+        //   <ul key={book._id}>Status: {book.status}</ul>
+        //   </>
+        // )) : ( <p>Book Carousel coming soon</p> )} */}
       </>
-    )
+    //)
   }
 }
 
 export default BestBooks;
+
+
+
+// return (
+//   <>
+   
+//     <h2>My Essential Lifelong Learning &amp; Formation Shelf</h2>
+
+//     {this.state.books.length > 0 ? this.state.books.map(book => ( <>
+//       <ul key={book._id}>Title: {book.title}</ul>
+//       <ul key={book._id}>Description: {book.description}</ul>
+//       <ul key={book._id}>Status: {book.status}</ul>
+//       </>
+//     )) : ( <p>Book Carousel coming soon</p> )}
+//     </>
+// )
+// }
+// }
+
+// export default BestBooks;
+
