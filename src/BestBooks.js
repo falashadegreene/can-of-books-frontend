@@ -16,12 +16,12 @@ class BestBooks extends React.Component {
     console.log('are you there?');
     try {
       let results = await axios.get(`${process.env.REACT_APP_SERVER}/books`);
-      console.log(results.data);
+      //console.log(results.data);
       this.setState({
         books: results.data
       })
     } catch (error) {
-      console.log('oops, there is an error:', error.response.data)
+      //console.log('oops, there is an error:', error.response.data)
     }
   }
 
@@ -31,14 +31,14 @@ class BestBooks extends React.Component {
   }
 
   render() {
-    console.log(this.state.books);
+    //console.log(this.state.books);
 
     return (
       <>
 
         <h2>My Essential Lifelong Learning &amp; Formation Shelf</h2>
 
-        {this.state.books.length > 0 ? this.state.books.map(book => (<>
+        {this.state.books.length? this.state.books.map(book => (<>
           <ul key={book._id}>Title: {book.title}</ul>
           <ul key={book._id}>Description: {book.description}</ul>
           <ul key={book._id}>Status: {book.status}</ul>

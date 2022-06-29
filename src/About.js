@@ -8,7 +8,7 @@ class Profile extends Component {
               From: Maryland
              
              Name: Elizabeth Beale
-             From: Seattle, Washinton
+             From: Seattle, Washington
     </p>
   }
 };
