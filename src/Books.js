@@ -1,32 +1,62 @@
-import { Component } from 'react';
-import  ListGroup from 'react-bootstrap';
+import React from 'react';
+import { ListGroup, Container, Button } from 'react-bootstrap';
+import UpdateBooks from './UpdateBooks';
 
-class Books extends Component {
+class Books extends React.Component {
   render() {
+    let books = this.props.books.map(book => (
+      <Book // why are we doing it this way
+        book={book}
+        key={book._id}
+        deleteBooks={this.props.deleteBooks}
+        updateBooks={this.props.updateBooks}
+      />
+    ))
     return (
-    <ListGroup>
-    {this.props.books.length && this.props.books.map( book => (
-      <ListGroup.Item key={book._id}>
-      <Book key={book} onDelete={this.props.onDelete}/>
-      </ListGroup.Item>
-    ))}
-    </ListGroup>
-     
+      <Container>
+        <ListGroup>
+          {books}
+        </ListGroup>
+      </Container>
     )
   }
 }
 
-class Book extends Component {
-  delete = () => {
-    this.props.onDelete(this.props.info);
+class Book extends Component { // this is what she has in the demo code but ... err... I'm not actually sure what's happening here.  
+  constructor(props) {
+    super(props);
+    this.state = {
+      showUpdateForm: false
+    }
   }
 
   render() {
-    console.log(this.props.book);
     return (
-      <h3>{this.props.info.title} ({this.props.info.description}) <span onClick={this.delete}>[X]</span></h3>
-    );
+      <>
+        <ListGroup.Item>
+          {this.props.book.title}
+          <div>
+            <Button 
+              variant="info" 
+              onClick={() => this.props.deleteBooks(this.props.book._id)}>
+              Delete Book
+            </Button>
+            <Button>
+              onClick={() => this.setState({ showUpdateForm: true })}
+              Update Bookshelf
+            </Button>
+          </div>
+        </ListGroup.Item>
+        {
+          this.state.showUpdateForm &&
+          <UpdateBooks
+            book={this.prop.book}
+            updateBooks={this.props.updateBooks}
+          />
+        }
+      </>
+    )
   }
 }
 
-export default Books; 
+export default Books;
