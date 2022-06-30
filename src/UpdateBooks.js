@@ -8,6 +8,7 @@ class UpdateBooks extends React.Component {
     e.preventDefault();
     let bookToUpdate = {
       title: e.target.title.value || this.props.book.title,
+      author: e.target.title.value || this.props.book.author,
       description: e.target.description.value || this.props.book.description,
       status: e.target.status.value || this.props.book.status,
       _id: this.props.book._id,
@@ -18,12 +19,17 @@ class UpdateBooks extends React.Component {
 
   render() {
     return (
-      <Container>
+      <Container> 
+                {/* TO DO - do we need controlId and name? */}
         <Form onSubmit={this.handleSubmit}>
-
           <Form.Group controlId="title">
             <Form.Label>Title</Form.Label>
             <Form.Control name="title" type="text" />
+          </Form.Group>
+
+          <Form.Group controlId="author">
+            <Form.Label>Author</Form.Label>
+            <Form.Control name="author" type="text" />
           </Form.Group>
 
           <Form.Group>
