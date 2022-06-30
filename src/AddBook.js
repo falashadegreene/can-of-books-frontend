@@ -14,6 +14,11 @@ class AddBook extends React.Component {
           </Form.Group>
 
           <Form.Group>
+            <Form.Label>Author</Form.Label>
+            <Form.Control name="author" type="text" />
+          </Form.Group>
+
+          <Form.Group>
             <Form.Label>Description</Form.Label>
             <Form.Control name="description" type="text" />
           </Form.Group>
