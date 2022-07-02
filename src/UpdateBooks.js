@@ -1,5 +1,5 @@
 import React from 'react';
-import { Form, Button, Container } from 'react-bootstrap';
+import { Form, Button, Modal } from 'react-bootstrap';
 
 
 class UpdateBooks extends React.Component {
@@ -8,7 +8,7 @@ class UpdateBooks extends React.Component {
     e.preventDefault();
     let bookToUpdate = {
       title: e.target.title.value || this.props.book.title,
-      author: e.target.title.value || this.props.book.author,
+      author: e.target.author.value || this.props.book.author,
       description: e.target.description.value || this.props.book.description,
       status: e.target.status.value || this.props.book.status,
       _id: this.props.book._id,
@@ -19,31 +19,39 @@ class UpdateBooks extends React.Component {
 
   render() {
     return (
-      <Container> 
-                {/* TO DO - do we need controlId and name? */}
-        <Form onSubmit={this.handleSubmit}>
-          <Form.Group controlId="title">
-            <Form.Label>Title</Form.Label>
-            <Form.Control name="title" type="text" />
-          </Form.Group>
+      <Modal
+        show={this.props.showModal}
+        onHide={this.props.handleHideModal}
+      >
+        <Modal.Header closeButton>
+          <Modal.Title>Update a book</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
 
-          <Form.Group controlId="author">
-            <Form.Label>Author</Form.Label>
-            <Form.Control name="author" type="text" />
-          </Form.Group>
+          <Form onSubmit={this.handleSubmit}>
+            <Form.Group>
+              <Form.Label controlId="title">Title</Form.Label>
+              <Form.Control placeholder="{this.props.book.title}" type="text" />
+            </Form.Group>
 
-          <Form.Group>
-            <Form.Label>Description</Form.Label>
-            <Form.Control name="description" type="text" />
-          </Form.Group>
+            <Form.Group controlId="author">
+              <Form.Label>Author</Form.Label>
+              <Form.Control placeholder="{this.props.book.author}" type="text" />
+            </Form.Group>
 
-          <Form.Group>
-            <Form.Check name="hasRead" type="checkbox" label="has-read" />
-          </Form.Group>
+            <Form.Group controlId="description">
+              <Form.Label>Description</Form.Label>
+              <Form.Control placeholder="{this.props.book.description}" type="text" />
+            </Form.Group>
 
-          <Button type="submit">Update</Button>
-        </Form>
-      </Container>
+            <Form.Group controlId="status">
+              <Form.Check type="checkbox" label="Have you read this book?" />
+            </Form.Group>
+
+            <Button type="submit">Submit Update!</Button>
+          </Form>
+        </Modal.Body>
+      </Modal>
     )
   }
 }
