@@ -1,37 +1,21 @@
-Name of feature:
+# Project Name: Can of Books (Frontend)
 
-Estimate of time needed to complete: _____
-
-Start time: _____
-
-Finish time: _____
-
-Actual time needed to complete: _____
-
-# Project Name: Can-of-books-Frontend
-
-**Author**: Falashade, Elizabeth
-**Version**: 1.0.0 (increment the patch/fix version number if you make more commits past your first submission)
+**Authors**: Falashade Greene and Elizabeth Beale
 
 ## Overview
-<!-- Provide a high level overview of what this application is and why you are building it, beyond the fact that it's an assignment for this class. (i.e. What's your problem domain?) -->
+
+This app uses MongoAtlas database to access data about books. That data is sent from the server to the frontend, and then displayed using Bootstrap components: Carousel, Modal, and Forms.
 
 ## Getting Started
-<!-- What are the steps that a user must take in order to build this app on their own machine and get it running? -->
+
+- Clone this repository using `git clone`
+- Run `npm install`
+- Add your API key to `env.sample`
+- Run `npm start`
 
 ## Architecture
-<!-- Provide a detailed description of the application design. What technologies (languages, libraries, etc) you're using, and any other relevant design information. -->
 
-## Change Log
-<!-- Use this area to document the iterative changes made to your application as each feature is successfully implemented. Use time stamps. Here's an example:
-
-01-01-2001 4:59pm - Application now has a fully-functional express server, with a GET route for the location resource. -->
-
-## Estimates
-<!-- See below -->
-
-## Credit and Collaborations
-<!-- Give credit (and a link) to other people or resources that helped you build this application. -->
+- JavaScript, HTML, CSS, React, Bootstrap, MongoAtlas.
 
 # Team Agreement
 
@@ -45,12 +29,6 @@ Actual time needed to complete: _____
 
 - What is your plan if you start to fall behind? Ask for help from our instructors.
 
-## Cooperative
-
-Make a list of each parson’s strengths.
-
-- EB. Front-end, CSS, design, details, catching errors.
-- FG. Vanilla CSS, HTML. Resourceful: finding answers on Google.
 
 ## How can you best utilize these strengths in the development of your application?
 
